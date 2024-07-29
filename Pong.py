@@ -67,6 +67,20 @@ while run:
                 paddle_2.setKey(pygame.K_UP)
                 paddle_2.setSpeed(0, -PADDLE_SPEED_Y)
             # CHECK - Key was DOWN
+            if event.key == pygame.K_UP:
+                # Set paddle_2 VECTOR to negative PADDLE_SPEED_Y
+                paddle_2.setKey(pygame.K_UP)
+                paddle_2.setSpeed(0, -PADDLE_SPEED_Y)
+
+            if event.key == pygame.K_LEFT:
+                # Set paddle_2 VECTOR to negative PADDLE_SPEED_Y
+                paddle_2.setKey(pygame.K_LEFT)
+                paddle_2.setSpeed(0, -PADDLE_SPEED_Y)
+            if event.key == pygame.K_RIGHT:
+                # Set paddle_2 VECTOR to negative PADDLE_SPEED_Y
+                paddle_2.setKey(pygame.K_RIGHT)
+                paddle_2.setSpeed(0, PADDLE_SPEED_Y)
+
             elif event.key == pygame.K_DOWN:
                 # Set paddle_2 VECTOR to positive PADDLE_SPEED_Y
                 paddle_2.setKey(pygame.K_DOWN)
@@ -80,12 +94,12 @@ while run:
 
             if event.key == pygame.K_a:
                 # Set paddle_1 VECTOR to negative PADDLE_SPEED_Y
-                paddle_1.setKey(pygame.K_w)
+                paddle_1.setKey(pygame.K_a)
                 paddle_1.setSpeed(0, -PADDLE_SPEED_Y)
             # CHECK - Key was S
             if event.key == pygame.K_d:
                 # Set paddle_1 VECTOR to positive PADDLE_SPEED_Y
-                paddle_1.setKey(pygame.K_s)
+                paddle_1.setKey(pygame.K_d)
                 paddle_1.setSpeed(0, PADDLE_SPEED_Y)
             elif event.key == pygame.K_s:
                 # Set paddle_1 VECTOR to positive PADDLE_SPEED_Y
@@ -101,6 +115,10 @@ while run:
             # CHECK - Key was DOWN and paddle_2 was moving DOWN
             if event.key == pygame.K_DOWN and paddle_2.checkKey(pygame.K_DOWN):
                 # Set paddle_2 VECTOR to 0
+                paddle_2.setSpeed(0, 0)
+            if event.key == pygame.K_LEFT:
+                paddle_2.setSpeed(0, 0)
+            if event.key == pygame.K_RIGHT:
                 paddle_2.setSpeed(0, 0)
                 
             # CHECK - Key was UP and paddle_2 was moving UP
