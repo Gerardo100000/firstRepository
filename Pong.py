@@ -67,10 +67,6 @@ while run:
                 paddle_2.setKey(pygame.K_UP)
                 paddle_2.setSpeed(0, -PADDLE_SPEED_Y)
             # CHECK - Key was DOWN
-            if event.key == pygame.K_UP:
-                # Set paddle_2 VECTOR to negative PADDLE_SPEED_Y
-                paddle_2.setKey(pygame.K_UP)
-                paddle_2.setSpeed(0, -PADDLE_SPEED_Y)
 
             if event.key == pygame.K_LEFT:
                 # Set paddle_2 VECTOR to negative PADDLE_SPEED_Y
