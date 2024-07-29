@@ -113,6 +113,10 @@ class Paddle:
     def setSpeed(self, dx, dy):
         self.dx = dx
         self.dy = dy
+
+    def decreaseSpeed(self, dx, dy):                     #<--  <-- <-- <--- <-- <-- <-- <-- <-- <-- <-- <-- <-- <-- <-- <-- <-- <--
+        while(self.dy != 0):
+            self.dy = min(0, dy - .01)
     
     def move(self, dt):
         self.x = max(self.x_clamp[0], min(self.x_clamp[1] - self.width, self.x + self.dx * dt))
@@ -121,9 +125,6 @@ class Paddle:
     def setPos(self, x, y):
         self.x = x
         self.y = y
-
-    def decel(self):
-        print("E")
-
+        
     def render(self):
         return pygame.Rect(self.x, self.y, self.width, self.height)
