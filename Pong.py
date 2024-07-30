@@ -35,6 +35,8 @@ paddle_height = 100
 paddle_1 = GameState.Paddle(x=50, y=0, width=paddle_width, height=paddle_height, x_clamp=(0, SCREEN_LENGTH // 2), y_clamp=(0, SCREEN_HEIGHT))
 paddle_2 = GameState.Paddle(x=SCREEN_LENGTH - paddle_width - 50, y=0, width=paddle_width, height=paddle_height, x_clamp=(SCREEN_LENGTH // 2, SCREEN_LENGTH), y_clamp=(0, SCREEN_HEIGHT))
 
+
+colorList = [255, 255, 255]
 # Screen Object (Surface)
 screen = pygame.display.set_mode((SCREEN_LENGTH, SCREEN_HEIGHT))
 pygame.display.set_caption('Pong')
@@ -163,6 +165,7 @@ while run:
             ball.setDir(1, -1 if random.random() < 0.5 else 1)
             ball.recieved()
             ball.setPos(paddle_1.getPos()[0] + paddle_width)
+            colorList = [random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)]
             
             # CHECK - Rally is a new interval of 10
             if ball.getRally() / 10 == BALL_LEVEL * 1.0:
@@ -178,6 +181,7 @@ while run:
             ball.setDir(-1, -1 if random.random() < 0.5 else 1)
             ball.recieved()
             ball.setPos(paddle_2.getPos()[0] - paddle_width)
+            colorList = [random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)]
             
             # CHECK - Rally is a new interval of 10
             if ball.getRally() / 10 == BALL_LEVEL * 1.0:
@@ -199,7 +203,7 @@ while run:
     display_speed = TEXT_FONT_42.render(str(BALL_SPEED) + "x",True, (255, 255, 255))        # Speed Tracker
     display_score = TEXT_FONT_42.render(str(game.getScore()), True, (255, 255, 255))        # Score Tracker
     
-    screen.fill((0, 0, 0))                                                                  # Background
+    screen.fill((colorList[0], colorList[1], colorList[2]))                                                                  # Background
     screen.blit(display_rally, ((SCREEN_LENGTH - display_rally.get_width()) // 2, 300))     # Rally Tracker
     screen.blit(display_speed, ((SCREEN_LENGTH - display_speed.get_width()) // 2, 400))     # Rally Tracker
     
@@ -208,8 +212,8 @@ while run:
         BALL_SPEED = ORI_BALL_SPEED                                                         # Reset ball speed
         screen.blit(display_score, ((SCREEN_LENGTH - display_score.get_width()) // 2, 500)) # Score Tracker
     pygame.draw.rect(screen, (255, 255, 255), ball.render())                                # Ball
-    pygame.draw.rect(screen, (255, 255, 255), paddle_1.render())                            # Paddle 1
-    pygame.draw.rect(screen, (255, 255, 255), paddle_2.render())                            # Paddle 2
+    pygame.draw.rect(screen, (0, 0, 0), paddle_1.render())                            # Paddle 1
+    pygame.draw.rect(screen, (0, 0, 0), paddle_2.render())                            # Paddle 2
     pygame.display.update()                                                                 # Update Renders
     
 pygame.quit()
